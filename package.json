@@ -5,10 +5,18 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
+    "classnames": "^2.2.5",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.1.0",
+    "normalize.css": "^6.0.0",
+    "react": "^15.5.3",
+    "react-addons-css-transition-group": "^15.5.2",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.5.3",
+    "react-parallax": "^1.2.6",
+    "react-router": "^3.0.3",
+    "react-toolbox": "^2.0.0-beta.8",
+    "react-transition-group": "^1.1.1",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.67.2"
   }
 }
