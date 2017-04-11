@@ -8,10 +8,9 @@ import { Parallax } from 'react-parallax';
 import Task from './Task.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
-import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
-import {Button} from 'react-toolbox/lib/button';
+import { IndexLink, Link } from 'react-router';
 //import theme from './PurpleAppBar.scss';
-
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 
 // App component - represents the whole app
 class AppNew extends Component {
@@ -77,7 +76,79 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
           <h1>TRENDING ON TECHIE PULSE</h1>
            
         </Parallax>
-          <Button label="Hello World!" />
+            
+            <Grid>
+                <Row className="show-grid">
+                    <Col xs={12} sm={6}>
+                        <div className="card card-3"><a href="#">
+                        <div className="newsIMG">
+                            <img src="2.jpg"/>
+                            <h4>Samsung S8 Fail?</h4>
+                            <h3>10th April 2017</h3>
+                            <div className="extra">Samsung launched the new...</div>
+                        </div>
+                </a></div>
+                    </Col>
+                    <Col xs={12} sm={6}>
+                        <div className="card card-3"><a href="#">
+                        <div className="newsIMG">
+                            <img src="3.jpg"/>
+                            <h4>Samsung S8 Fail?</h4>
+                            <h3>10th April 2017</h3>
+                            <div className="extra">Samsung launched the new...</div>
+                        </div>
+                        </a></div>
+                    </Col>
+                </Row>
+            </Grid>
+            
+          <Grid>
+                <Row className="show-grid">
+                    <Col xs={12} sm={12}>
+                        <div className="card card-3">
+                            <Link to="/posts/samsung" activeClassName="active">
+                        <div className="newsIMG">
+                            <img src="1.JPG"/>
+                            <h4>Samsung S8 Camera Test</h4>
+                            <h3>10th April 2017</h3>
+                            <div className="extra">Samsung launched the new...</div>
+                        </div>
+                            </Link>
+                        </div>
+                    </Col>
+                </Row>
+            </Grid>
+            
+             <Grid>
+                <Row className="show-grid">
+                    <Col xs={12} sm={6}>
+                        <div className="card card-3"><a href="#">
+                        <div className="newsIMG">
+                            <img src="2.jpg"/>
+                            <h4>Samsung S8 Fail?</h4>
+                            <h3>10th April 2017</h3>
+                            <div className="extra">Samsung launched the new...</div>
+                        </div>
+                </a></div>
+                    </Col>
+                    <Col xs={12} sm={6}>
+                        <div className="card card-3"><a href="#">
+                        <div className="newsIMG">
+                            <img src="3.jpg"/>
+                            <h4>Samsung S8 Fail?</h4>
+                            <h3>10th April 2017</h3>
+                            <div className="extra">Samsung launched the new...</div>
+                        </div>
+                </a></div>
+                    </Col>
+                </Row>
+            </Grid>
+            
+            
+            
+            <div>
+                
+            </div>
       </div>
     );
   }

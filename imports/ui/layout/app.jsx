@@ -4,6 +4,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import { IndexLink, Link } from 'react-router';
 
+import FaBeer from 'react-icons/lib/fa/search';
+
 //import { Navigation } from '../components/navigation.jsx';
 
 class App2 extends Component{
@@ -61,8 +63,11 @@ class App2 extends Component{
         
             <ul>
     <li><h1>TECHIE PULSE</h1></li>
-    <li style={{float:"right"}}><Link to="/app1" activeClassName="active">About</Link></li>
+    <li style={{float:"right"}}><Link to="/about" activeClassName="active">About</Link></li>
+    <li style={{float:"right"}}><Link to="/contact" activeClassName="active">Contact</Link></li>
+    <li style={{float:"right"}}><Link to="/categories" activeClassName="active">Categories</Link></li>
     <li style={{float:"right"}}><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+    <li style={{float:"right"}}><IndexLink to="/search" activeClassName="active"><FaBeer /></IndexLink></li>
     
   </ul>
    </section>
