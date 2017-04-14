@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
+import { Email } from 'meteor/email';
 export const Tasks = new Mongo.Collection('tasks');
 
 if (Meteor.isServer) {
@@ -15,6 +16,35 @@ if (Meteor.isServer) {
       ],
     });
   });
+    
+  Meteor.startup( function() {
+      process.env.MAIL_URL = "smtp://noreply@techiepulse.com:micron123@server511.webhostingpad.com:465";
+//
+//      Email.send({
+//         to: "vdhutia18@gmail.com",
+//         from: "noreply@booking.thaiembassyuk.org.uk",
+//         subject: "Royal Thai Embassy Booking Confirmation",
+//         text: "The email content..."
+//      });
+//
+   });
+
+    Meteor.methods({
+    sendEmail: function (to, text) {
+        check([to, text], [String]);
+
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+            to: "vivek@dhutia.com",
+            from: "v@vivekdhutia.com",
+            subject: "Royal Thai Embassy Booking Confirmation",
+            text: "text",
+        });
+    }
+});
 }
 
 Meteor.methods({

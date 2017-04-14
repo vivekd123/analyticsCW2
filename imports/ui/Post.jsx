@@ -72,7 +72,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
         <Parallax bgImage="../galaxy-s8.jpg" strength={400}>
           <br/>
             <div className="parIn"></div>
-          <h1>Samsung S8</h1>
+          <h1>Samsung S8<span>34 Minutes ago</span></h1>
            
         </Parallax>
             
@@ -91,7 +91,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                         </div>
                     </Col>
                     <Col xs={12} sm={4}>
-                            <h1>SPECIFICATIONS</h1>
+                            <h1>SPECS</h1>
         
                         <div className="postTextSpec">
                             <ul>
@@ -111,6 +111,18 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                                 <li>Memory (Ram): 4GB</li>
                             </ul>
                         </div>
+                        
+                        
+                         
+                        <div className="cardAuthor card-3">
+                            
+                            <div className="newsIMG2">
+                                <img src="../profile2.jpg"/>
+                                <h3>A U T H O R</h3>
+                                <h4>Vivek Dhutia</h4>
+                                <div className="extra">Passionate about gadgets and all things tech</div>
+                            </div>
+                        </div>
                     </Col>
                 </Row>
             </Grid>
@@ -121,7 +133,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={4}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="../2.jpg"/>
+                            <img src="../2card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -131,7 +143,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={4}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="../3.jpg"/>
+                            <img src="../3card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -141,7 +153,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                      <Col xs={12} sm={4}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="../3.jpg"/>
+                            <img src="../3card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -156,7 +168,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={6}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="../2.jpg"/>
+                            <img src="../2card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -166,7 +178,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={6}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="../3.jpg"/>
+                            <img src="../3card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>

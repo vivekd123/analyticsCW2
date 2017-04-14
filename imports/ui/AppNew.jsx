@@ -12,6 +12,7 @@ import { IndexLink, Link } from 'react-router';
 //import theme from './PurpleAppBar.scss';
 import { Button, Grid, Row, Col } from 'react-bootstrap';
 
+
 // App component - represents the whole app
 class AppNew extends Component {
   constructor(props) {
@@ -67,10 +68,10 @@ class AppNew extends Component {
 
   render() {
 const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
-    
+
     return (
       <div className="containerPar">
-        <Parallax bgImage="4.jpg" strength={400}>
+        <Parallax bgImage="cover.jpg" strength={400}>
           <br/>
             <div className="parIn"></div>
           <h1>TRENDING ON TECHIE PULSE</h1>
@@ -82,7 +83,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={6}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="2.jpg"/>
+                              <img src="2card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -92,7 +93,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={6}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="3.jpg"/>
+                            <img src="3card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -108,7 +109,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                         <div className="card card-3">
                             <Link to="/posts/samsung" activeClassName="active">
                         <div className="newsIMG">
-                            <img src="1.JPG"/>
+                            <img src="1test.jpg"/>
                             <h4>Samsung S8 Camera Test</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -124,7 +125,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={6}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="2.jpg"/>
+                            <img src="2card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
@@ -134,7 +135,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={6}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="3.jpg"/>
+                            <img src="3card.jpg"/>
                             <h4>Samsung S8 Fail?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
