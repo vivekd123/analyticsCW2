@@ -89,7 +89,7 @@ class App2 extends Component{
     <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.instagram.com/techiepulse/" target="_blank"><FaEmail /></a></li>
     <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/about" activeClassName="active">About</Link></li>
     <li  className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/contact" activeClassName="active">Contact</Link></li>
-    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><IndexLink to="/" activeClassName="active">Trending</IndexLink></li>
                 <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><a onClick={this.toggleSearch.bind(this)}><FaBeer /></a></li>
     <li className="mobileBar" style={{float:"right"}}><a onClick={this.burgerMen.bind(this)}><FaBar /></a></li>
   </ul>
@@ -99,7 +99,7 @@ class App2 extends Component{
             <section className="navBar2">
             <ul>
     <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/gadgets" activeClassName="active">Gadgets</Link></li>
-    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Mobile</Link></li>  
+    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Mobile Tech</Link></li>  
   </ul>
                     
    </section>

@@ -29,19 +29,28 @@ if (Meteor.isServer) {
 //
    });
 
+    
     Meteor.methods({
     sendEmail: function (to, text) {
         check([to, text], [String]);
+        
+        SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
+        
+        var emailData = {
+              name: "Vivek",
+              favoriteRestaurant: "Honker Burger",
+              bestFriend: "Skeeter Valentine",
+            };
 
         // Let other method calls from the same client start running,
         // without waiting for the email sending to complete.
         this.unblock();
 
         Email.send({
-            to: "vivek@dhutia.com",
-            from: "v@vivekdhutia.com",
-            subject: "Royal Thai Embassy Booking Confirmation",
-            text: "text",
+            to: "vivek.dhutia@my.westminster.ac.uk",
+            from: 'Techie Pulse <noreply@techiepulse.com>',
+            subject: "Techie Pulse Week-In Review",
+            html: SSR.render('htmlEmail', emailData),
         });
     }
 });

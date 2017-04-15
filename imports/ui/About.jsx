@@ -79,38 +79,50 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
             <Grid>
                 <Row className="show-grid postCont">
                     <Col xs={12} sm={8}>
-                       <h1>INITIAL IMPRESSIONS</h1>
+                       <h1>TECHIE</h1>
                         <div className="postText">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id massa vulputate posuere. Ut eget sagittis nunc. Quisque eleifend metus ac tristique pharetra. Nunc urna lectus, egestas et purus eget, hendrerit varius mi. Mauris posuere arcu massa, in blandit enim ultrices nec. Cras eu eros justo. In tempor imperdiet lectus, ut sodales ante porta quis. Mauris euismod, dui ullamcorper facilisis dignissim, arcu diam consectetur elit, vitae convallis augue lorem sodales ante. Nullam in massa imperdiet, dapibus ex non, venenatis felis. Aliquam sit amet luctus nibh. Phasellus tincidunt porttitor elementum. Morbi enim magna, mollis quis velit in, eleifend aliquam libero. Donec eu ante urna. Maecenas viverra ipsum libero, sed placerat nulla porttitor in.</p>
-                            <p>Nullam volutpat, ante vel cursus varius, velit orci auctor nibh, sit amet viverra sapien nulla et turpis. Donec aliquam id eros a egestas. Nunc purus sapien, auctor eu pharetra dignissim, convallis id nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at libero varius, pellentesque erat at, luctus felis. Donec interdum, augue id malesuada faucibus, lectus sapien rhoncus eros, at lacinia dui ex id urna. Sed in blandit erat. Nullam vel congue leo. Proin maximus laoreet mi non placerat. Aliquam nisi lectus, consectetur sit amet massa pulvinar, suscipit porta orci. Morbi fringilla felis ut quam tristique, a viverra urna malesuada. Ut non odio pulvinar, dignissim eros eget, pharetra lorem. Suspendisse sit amet egestas mauris.</p>
+                            <p>In 2014 we started the Techie Life youtube channel to share our passion of technology with the world.</p>
+                            <p>The channel was born when the three of us were in a cafe, talking about technology and thought we should share our discussions and views to the world. We also decided to discuss on the show, recent tech events like apple's keynotes, as well as provide a brief explanations of the released hardware or software.</p>
+                            <p>We got so busy with our University projects and assignments that we didn't have enough time to maintain the youtube channel. This is when we decided to form Techie Pulse blog website.</p>
+                            <p>We hope that through Techie Pulse we can share the same quality of content as we did on the youtube channel.</p>
+                            
                         </div>
-                        <h1>REVIEW</h1>
-                        <div className="postText">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id massa vulputate posuere. Ut eget sagittis nunc. Quisque eleifend metus ac tristique pharetra. Nunc urna lectus, egestas et purus eget, hendrerit varius mi. Mauris posuere arcu massa, in blandit enim ultrices nec. Cras eu eros justo. In tempor imperdiet lectus, ut sodales ante porta quis. Mauris euismod, dui ullamcorper facilisis dignissim, arcu diam consectetur elit, vitae convallis augue lorem sodales ante. Nullam in massa imperdiet, dapibus ex non, venenatis felis. Aliquam sit amet luctus nibh. Phasellus tincidunt porttitor elementum. Morbi enim magna, mollis quis velit in, eleifend aliquam libero. Donec eu ante urna. Maecenas viverra ipsum libero, sed placerat nulla porttitor in.</p>
-                            <p>Nullam volutpat, ante vel cursus varius, velit orci auctor nibh, sit amet viverra sapien nulla et turpis. Donec aliquam id eros a egestas. Nunc purus sapien, auctor eu pharetra dignissim, convallis id nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at libero varius, pellentesque erat at, luctus felis. Donec interdum, augue id malesuada faucibus, lectus sapien rhoncus eros, at lacinia dui ex id urna. Sed in blandit erat. Nullam vel congue leo. Proin maximus laoreet mi non placerat. Aliquam nisi lectus, consectetur sit amet massa pulvinar, suscipit porta orci. Morbi fringilla felis ut quam tristique, a viverra urna malesuada. Ut non odio pulvinar, dignissim eros eget, pharetra lorem. Suspendisse sit amet egestas mauris.</p>
-                        </div>
+                        
                     </Col>
                     <Col xs={12} sm={4}>
                             <h1>THE TEAM</h1>
         
-                        <div className="postTextSpec">
-                            <ul>
-                                <li>Manufacturer: Samsung Electronics LTD.</li>
-                                <li>Screen Size: 5.8inch Curved</li>
-                                <li>Processor: Exynos 88778</li>
-                                <li>Memory (Ram): 4GB</li>
-                            </ul>
+                        <div className="cardAuthor card-3">
+                            
+                            <div className="newsIMG2">
+                                <img src="../profile2.jpg"/>
+                                <h3>A U T H O R</h3>
+                                <h4>Vivek Dhutia</h4>
+                                <div className="extra">Passionate about gadgets and all things tech</div>
+                            </div>
+                        </div>
+                
+                
+                        <div className="cardAuthor card-3">
+                            
+                            <div className="newsIMG2">
+                                <img src="../profiletony.jpg"/>
+                                <h3>A U T H O R</h3>
+                                <h4>Hariras Tongyai</h4>
+                                <div className="extra">Passionate about gadgets and all things tech</div>
+                            </div>
                         </div>
                         
-                         <h1>VENTURES</h1>
-                        <div className="postTextSpec">
-                            <ul>
-                                <li>Manufacturer: Samsung Electronics LTD.</li>
-                                <li>Screen Size: 5.8inch Curved</li>
-                                <li>Processor: Exynos 88778</li>
-                                <li>Memory (Ram): 4GB</li>
-                            </ul>
+                        <div className="cardAuthor card-3">
+                            
+                            <div className="newsIMG2">
+                                <img src="../profiletony.jpg"/>
+                                <h3>A U T H O R</h3>
+                                <h4>Kemal Kole</h4>
+                                <div className="extra">Passionate about gadgets and all things tech</div>
+                            </div>
                         </div>
+                        
                     </Col>
                 </Row>
             </Grid>
