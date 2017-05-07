@@ -52,6 +52,19 @@ if (Meteor.isServer) {
             subject: "Techie Pulse Week-In Review",
             html: SSR.render('htmlEmail', emailData),
         });
+    },
+        
+        sendMessage: function (name, email, subject, message) {        
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+            to: "info@techiepulse.com",
+            from: email,
+            subject: subject +  " - " + name,
+            text: message,
+        });
     }
 });
 }

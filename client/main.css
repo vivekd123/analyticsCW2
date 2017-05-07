@@ -268,11 +268,13 @@ input[type=checkbox]{
 
 .containerPar h1{
     background-color: #222222;
+    opacity: 0.9;
     color: #fff;
 /*    margin-left: 50px;*/
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
+    
 }
 
 .containerPar h1 span{
@@ -607,7 +609,7 @@ PULSE END
 
 .card {
   background: #fff;
-  border-radius: 2px;
+  border-radius: 5px;
   display: inline-block;
   height: 300px;
 /*  margin: 1rem;*/
@@ -661,7 +663,6 @@ PULSE END
     position:relative;
     width:100%;
     height:300px;
-    
 }
 
 .newsIMG .extra{
@@ -732,6 +733,7 @@ PULSE END
     color: #fff;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
+    font-size: 20px;
 }
 
 .newsIMG h3{
@@ -758,7 +760,7 @@ PULSE END
     vertical-align:top;
      height: 100%; 
     object-fit:cover;
-
+        border-radius: 5px;
 /*    border: 2px solid #000;*/
 }
 
@@ -976,4 +978,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     .mobileBar{
         display: block;
     }
+}
+
+.example-appear {
+  opacity: 0.01;
+
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.searchBox{
+    width: 100vw;
+    font-size: 30px;
+    border: 0px;
+    border-color: #fff;
+    margin: 5px;
+    display: block;
 }

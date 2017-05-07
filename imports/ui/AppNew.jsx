@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import { Tasks } from '../api/tasks.js';
 import { Parallax } from 'react-parallax';
 import Task from './Task.jsx';
@@ -27,7 +27,9 @@ class AppNew extends Component {
 //    componentDidMount(){
 //        console.log("Mounted");
 //        setTimeout(() => this.setState({ loading: false }), 1000);
-//    }    
+//    }   
+    
+    
     
   handleSubmit(event) {
     event.preventDefault();
@@ -71,7 +73,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
 
     return (
       <div className="containerPar">
-        <Parallax bgImage="cover.jpg" strength={400}>
+        <Parallax bgImage="home2.jpg" strength={200}>
           <br/>
             <div className="parIn"></div>
           <h1>TRENDING ON TECHIE PULSE</h1>
@@ -81,24 +83,32 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
             <Grid>
                 <Row className="show-grid">
                     <Col xs={12} sm={6}>
-                        <div className="card card-3"><a href="#">
+                        <ReactCSSTransitionGroup
+                              transitionName="example"
+                              transitionAppear={true}
+                              transitionAppearTimeout={500}
+                              transitionEnter={false}
+                              transitionLeave={false}>
+                                 <div className="card card-3"><Link to="/posts/what-is-bluetooth-5" activeClassName="active">
                         <div className="newsIMG">
-                              <img src="2card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
+                            
+                              <img src="bluetooth4.jpg"/>
+                            <h4>What is Bluetooth 5?</h4>
+                            <h3>17th April 2017</h3>
+                            <div className="extra">The latest and greatest in bluetooth technology</div>
                         </div>
-                </a></div>
+                </Link></div>
+                            </ReactCSSTransitionGroup>
                     </Col>
                     <Col xs={12} sm={6}>
-                        <div className="card card-3"><a href="#">
+                        <div className="card card-3"><Link to="/posts/gold-iphone" activeClassName="active">
                         <div className="newsIMG">
-                            <img src="3card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
+                            <img src="gold.jpg"/>
+                            <h4>Gold Plated iPhone 7</h4>
+                            <h3>16th April 2017</h3>
+                            <div className="extra">A custom gold plated iPhone 7...</div>
                         </div>
-                        </a></div>
+                        </Link></div>
                     </Col>
                 </Row>
             </Grid>
@@ -110,7 +120,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                             <Link to="/posts/samsung" activeClassName="active">
                         <div className="newsIMG">
                             <img src="1test.jpg"/>
-                            <h4>Samsung S8 Camera Test</h4>
+                            <h4>Samsung S7 Camera Test</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
                         </div>
@@ -125,8 +135,8 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={4}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="2card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
+                            <img src="bixby.jpg"/>
+                            <h4>Samsung Bixby First Look</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
                         </div>
@@ -135,8 +145,8 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={4}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="3card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
+                            <img src="mix.jpg"/>
+                            <h4>Xiaomi Mix: One of the best looking smartphones of 2017</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
                         </div>
@@ -145,8 +155,8 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                     <Col xs={12} sm={4}>
                         <div className="card card-3"><a href="#">
                         <div className="newsIMG">
-                            <img src="3card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
+                            <img src="note7.jpg"/>
+                            <h4>Can the Samsung S8 still catch fire as easily as the Note 7?</h4>
                             <h3>10th April 2017</h3>
                             <div className="extra">Samsung launched the new...</div>
                         </div>

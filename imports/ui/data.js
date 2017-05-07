@@ -1,141 +1,86 @@
 const data = [{
   "id": 1,
-  "first_name": "Amanda",
-  "last_name": "Grant",
-  "time": "8:54 AM",
-  "message": "rutrum",
-  "isRead": false,
-  "isViewed": false,
-  "image": images[0]
-}, {
+  "slug": "what-is-bluetooth-5",
+  "title": "What is Bluetooth 5?",
+  "image": "../cover2.jpg",
+  "date": "10th April 2017",
+  "post": [
+      {
+        section: 1,
+        title: "Prologue",
+        text: "<p>Gone are the days where we send photos and videos using Bluetooth. Nowadays the most common use of Bluetooth is headphones, speakers and connecting your smart IoT home devices. Until now the Bluetooth range and bandwith between devices has been limited, meaning that its uses were limited.</p>"
+       },
+        {
+        section: 2,
+        title: "Today",
+        text: "<p>The first ever mobile phone to support the latest and greatest Bluetooth 5 is the Samsung Galaxy S8 and S8+, but what does this mean for the average consumer?</p><p>The new version 5, boasts a range of upto 4 times that of bluetooth 4.2. This means you'll be able to walk much further without having to worry about the music stopping.</p><p>Bluetooth 5 has enough bandwith to support multiple devices at one time. This allows you to connect 2 individual heaphones or speakers to a single device.</p><p></p>"
+       },
+        {
+        section: 3,
+        title: "Conclusion",
+        text: "<p>To conclude the only real downside to this new iteration is that your current phone probably doesnt support it unless of course you just purchased Samsungs latest flagship. This new iteration is better in every way from previous generations, just remeber with greater power comes greater responsibility.</p>"
+       }
+  ],
+  "sidebar" : [
+      {
+        section: 1,
+        title: "Bluetooth 4.2",
+        text: "<ul><li>Range: 10 Meters</li><li>Max Transfer Speed: 1 Mbps</li></ul>",
+      },
+      {
+        section: 2,
+        title: "Bluetooth 5",
+        text: "<ul><li>Range: 120 Metres</li><li>Max Transfer Speed: 2 Mbps</li></ul>",
+      },
+      {
+        section: 3,
+        title: "Author",
+        text: "Vivek Dhutia",
+      }
+  ],
+},
+{
   "id": 2,
-  "first_name": "Gloria",
-  "last_name": "Hicks",
-  "time": "11:56 AM",
-  "message": "viverra pede",
-  "isRead": false,
-  "isViewed": true,
-  "image": images[1]
-}, {
-  "id": 3,
-  "first_name": "Gloria",
-  "last_name": "Lane",
-  "time": "1:34 AM",
-  "message": "vehicula consequat",
-  "isRead": true,
-  "isViewed": false,
-  "image": images[2]
-}, {
-  "id": 4,
-  "first_name": "Linda",
-  "last_name": "Wells",
-  "time": "2:12 AM",
-  "message": "vehicula",
-  "isRead": true,
-  "isViewed": true,
-  "image": images[3]
-}, {
-  "id": 5,
-  "first_name": "Samantha",
-  "last_name": "Lee",
-  "time": "11:23 AM",
-  "message": "amet",
-  "isRead": false,
-  "isViewed": false,
-  "image": images[4]
-}, {
-  "id": 6,
-  "first_name": "Irene",
-  "last_name": "Garcia",
-  "time": "3:15 PM",
-  "message": "quis orci nullam",
-  "isRead": false,
-  "isViewed": false,
-  "image": images[5]
-}, {
-  "id": 7,
-  "first_name": "Marilyn",
-  "last_name": "Grant",
-  "time": "5:06 AM",
-  "message": "felis sed lacus",
-  "isRead": true,
-  "isViewed": true,
-  "image": images[6]
-}, {
-  "id": 8,
-  "first_name": "Maya",
-  "last_name": "Carr",
-  "time": "11:28 PM",
-  "message": "purus aliquet at",
-  "isRead": true,
-  "isViewed": false,
-  "image": images[7]
-}, {
-  "id": 9,
-  "first_name": "Paula",
-  "last_name": "Kelly",
-  "time": "12:36 PM",
-  "message": "aliquam lacus morbi",
-  "isRead": true,
-  "isViewed": true,
-  "image": images[8]
-}, {
-  "id": 10,
-  "first_name": "Ruth",
-  "last_name": "Carr",
-  "time": "3:05 PM",
-  "message": "integer tincidunt",
-  "isRead": true,
-  "isViewed": true,
-  "image": images[9]
-}, {
-  "id": 11,
-  "first_name": "Christy",
-  "last_name": "Cook",
-  "time": "10:02 PM",
-  "message": "parturient montes nascetur",
-  "isRead": true,
-  "isViewed": true,
-  "image": images[10]
-}, {
-  "id": 12,
-  "first_name": "Karen",
-  "last_name": "Burke",
-  "time": "1:19 AM",
-  "message": "pede libero",
-  "isRead": false,
-  "isViewed": false,
-  "image": images[0]
-}, {
-  "id": 13,
-  "first_name": "Annie",
-  "last_name": "Garrett",
-  "time": "11:28 PM",
-  "message": "lacinia sapien quis",
-  "isRead": false,
-  "isViewed": false,
-  "image": images[1]
-}, {
-  "id": 14,
-  "first_name": "Ally",
-  "last_name": "Little",
-  "time": "12:45 AM",
-  "message": "mauris morbi non",
-  "isRead": false,
-  "isViewed": true,
-  "image": images[2]
-}, {
-  "id": 15,
-  "first_name": "Georgie",
-  "last_name": "Little",
-  "time": "10:24 AM",
-  "message": "rhoncus aliquam lacus",
-  "isRead": false,
-  "isViewed": true,
-  "image": images[3]
+  "slug": "gold-iphone",
+  "title": "Gold Plated iPhone 7",
+  "image": "../gold.jpg",
+  "date": "10th April 2017",
+  "post": [
+      {
+        section: 1,
+        title: "Prologue",
+        text: "<p>Gone are the days where we send photos and videos using Bluetooth. Nowadays the most common use of Bluetooth is headphones, speakers and connecting your smart IoT home devices. Until now the Bluetooth range and bandwith between devices has been limited, meaning that its uses were limited.</p>"
+       },
+        {
+        section: 2,
+        title: "Today",
+        text: "<p>The first ever mobile phone to support the latest and greatest Bluetooth 5 is the Samsung Galaxy S8 and S8+, but what does this mean for the average consumer?</p><p>The new version 5, boasts a range of upto 4 times that of bluetooth 4.2. This means you'll be able to walk much further without having to worry about the music stopping.</p><p>Bluetooth 5 has enough bandwith to support multiple devices at one time. This allows you to connect 2 individual heaphones or speakers to a single device.</p><p></p>"
+       },
+        {
+        section: 3,
+        title: "Conclusion",
+        text: "<p>To conclude the only real downside to this new iteration is that your current phone probably doesnt support it unless of course you just purchased Samsungs latest flagship. This new iteration is better in every way from previous generations, just remeber with greater power comes greater responsibility.</p>"
+       }
+  ],
+  "sidebar" : [
+      {
+        section: 1,
+        title: "Bluetooth 4.2",
+        text: "<ul><li>Range: 10 Meters</li><li>Max Transfer Speed: 1 Mbps</li></ul>",
+      },
+      {
+        section: 2,
+        title: "Bluetooth 5",
+        text: "<ul><li>Range: 120 Metres</li><li>Max Transfer Speed: 2 Mbps</li></ul>",
+      },
+      {
+        section: 3,
+        title: "Author",
+        text: "Vivek Dhutia",
+      }
+  ],
 }];
 
 module.exports = {
-  images,
   data
 };

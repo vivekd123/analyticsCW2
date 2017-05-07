@@ -23,12 +23,14 @@ class App2 extends Component{
         loading: true,
         condition: false,
         search: false,
+        newsletter: false,
+        subscribed: false,
     };
      
   }
         
     componentDidMount(){
-        setTimeout(() => this.setState({ loading: false }), 800);
+        setTimeout(() => this.setState({ loading: false }), 500);
 //        Meteor.call('sendEmail', "date", "hello");
     } 
     
@@ -41,7 +43,34 @@ class App2 extends Component{
     }
     
     toggleSearch(){
-        this.setState({ search: !this.state.search})
+        this.setState({ newsletter:false, search: !this.state.search})
+    }
+    
+    toggleNewsletter(){
+        this.setState({ search:false, newsletter: !this.state.newsletter})
+    }
+    
+    subscribeButton(){
+        const email = ReactDOM.findDOMNode(this.refs.subBox).value.trim();
+        var validator = require('validator');
+            var newVal = validator.isEmail(email); //=> true 
+                if (newVal){
+                        
+//                           Meteor.call('sendMessage', name, email, subject, message);
+                         // Clear form
+                           ReactDOM.findDOMNode(this.refs.subBox).value = "Thankyou for subscribing :)";
+                           ReactDOM.findDOMNode(this.refs.subButton).style.display = "none";
+                           ReactDOM.findDOMNode(this.refs.subButton2).style.visibility = "visible";
+                           ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = "";
+                    
+                    
+//                          this.setState({
+//                              success: true,
+//                          })
+                        alert("Thankyou for subscribing!");
+                }else{
+                         ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = "Please enter a valid email address";                    
+                }
     }
     
     render(){
@@ -86,7 +115,7 @@ class App2 extends Component{
     <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.facebook.com/techiepulse/" target="_blank"><FaFB /></a></li>
     <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://twitter.com/techie_pulse" target="_blank"><FaTW /></a></li>
     <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.instagram.com/techiepulse/" target="_blank"><FaIN /></a></li>
-    <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.instagram.com/techiepulse/" target="_blank"><FaEmail /></a></li>
+    <li className={this.state.condition ? "navlist2" :"navList"}><a onClick={this.toggleNewsletter.bind(this)}>Newsletter</a></li>
     <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/about" activeClassName="active">About</Link></li>
     <li  className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/contact" activeClassName="active">Contact</Link></li>
     <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><IndexLink to="/" activeClassName="active">Trending</IndexLink></li>
@@ -106,7 +135,26 @@ class App2 extends Component{
             {this.state.search ? 
                 <section className="navBar">
                     <ul>
-                        <li className={this.state.condition ? "navlist2" :"navList"}><Link to="/gadgets" activeClassName="active">Search</Link></li>           
+                        <li className={this.state.condition ? "navlist2" :"navList"}>
+                            
+                              <input className="searchBox" type="text" name="firstname" placeholder="Search" />
+                            
+                        </li>           
+                    </ul>
+                </section>
+            : ""
+            }
+            
+            {this.state.newsletter ? 
+                <section className="navBar">
+                    <ul>
+                        <li style={{margin:5}} className={this.state.condition ? "navlist2" :"navList"}> 
+                              
+                            <input className="searchBox" ref="subBox" type="text" name="firstname" placeholder="name@example.com" />
+                            <Button onClick={this.subscribeButton.bind(this)} style={{backgroundColor:"#153e72",color:"#fff"}} ref="subButton">Subscribe</Button>
+                            <Button onClick={this.toggleNewsletter.bind(this)} style={{backgroundColor:"#153e72",color:"#fff",visibility:"hidden"}} ref="subButton2">Close</Button>
+                            <h4 style={{color:'#ff0000'}} ref="errorMes"></h4>
+                        </li>           
                     </ul>
                 </section>
             : ""

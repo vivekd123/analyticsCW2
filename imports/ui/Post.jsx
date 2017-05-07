@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
@@ -8,8 +9,11 @@ import { Parallax } from 'react-parallax';
 import Task from './Task.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
+import renderHTML from 'react-render-html';
 //import theme from './PurpleAppBar.scss';
 import { Button, Grid, Row, Col } from 'react-bootstrap';
+
+import {data} from './data.js'
 
 // App component - represents the whole app
 class Post extends Component {
@@ -18,6 +22,10 @@ class Post extends Component {
 
     this.state = {
       hideCompleted: false,
+      validPost: true,
+      dataState: data,
+      postTitle:"",
+      postDate: "",
 //        loading: true
     };
   }
@@ -26,7 +34,22 @@ class Post extends Component {
 //        console.log("Mounted");
 //        setTimeout(() => this.setState({ loading: false }), 1000);
 //    }    
+  componentWillMount(){
+      let filteredData = this.state.dataState;
+      filteredData = filteredData.filter(post => post.slug == this.props.params.title);
+      this.setState({
+          dataState: filteredData
+      });
+      if (filteredData.length == 0){
+          console.log("notfound");
+          browserHistory.replace('/not-found');
+      }
+      
+      dataLayer.push({'vivek':this.props.params.title, 'event':'RunTask'})
+  }
     
+
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -63,66 +86,98 @@ class Post extends Component {
       );
     });
   }
+    renderTitle(){
+        var dataS = this.state.dataState;
+         return dataS.map((post) => {                
+          return(
+               <h1 key={post.title}>{post.title}<span>{post.date}</span></h1>
+            ); 
+        });
+    }
+    
+    renderImage(){
+        var dataS = this.state.dataState;
+         return dataS.map((post) => {                
+          return(
+              console.log(post.image),
+               post.image
+            ); 
+        });
+    }
+    
+    renderPost(){
+        var dataS = this.state.dataState;
+        var posts = [];
+        return dataS.map((post) => {            
+            for (var i = 0; i < post.post.length; i++){
+                posts.push(
+                    <div key={post.post[i].section}>
+                    <h1>{post.post[i].title}</h1>
+                    <div className="postText">{renderHTML(post.post[i].text)}</div>
+                    </div>
+                );
+            }
+            
+          return(
+               (posts)
+            ); 
+        });
+    }
+    
+    renderSideBar(){
+        var dataS = this.state.dataState;
+        var sidebar = [];
+        return dataS.map((post) => {
+            
+            for (var i = 0; i < post.sidebar.length; i++){
+                if (post.sidebar[i].title !== "Author"){
+                    sidebar.push(
+                    <div key={post.sidebar[i].section}>
+                    <h1>{post.sidebar[i].title}</h1>
+                    <div className="postTextSpec">{renderHTML(post.sidebar[i].text)}</div>
+                    </div>
+                    );
+                }else{
+                    sidebar.push(
+                    <div key={post.sidebar[i].section} className="cardAuthor card-3">
+                            <div className="newsIMG2">
+                                <img src="../profile2.jpg"/>
+                                <h3>A U T H O R</h3>
+                                <h4>{post.sidebar[i].text}</h4>
+                                <div className="extra">Passionate about gadgets and all things tech</div>
+                            </div>
+                        </div>
+                    );
+                }
+                
+            }
+            
+          return(
+               (sidebar)
+            ); 
+        });
+    }
 
   render() {
 const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
     
     return (
+
       <div className="containerPar">
-        <Parallax bgImage="../galaxy-s8.jpg" strength={400}>
+        <Parallax bgImage={this.renderImage()} strength={200}>
           <br/>
             <div className="parIn"></div>
-          <h1>Samsung S8<span>34 Minutes ago</span></h1>
+          {this.renderTitle()}
            
         </Parallax>
             
             <Grid>
                 <Row className="show-grid postCont">
                     <Col xs={12} sm={8}>
-                       <h1>INITIAL IMPRESSIONS</h1>
-                        <div className="postText">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id massa vulputate posuere. Ut eget sagittis nunc. Quisque eleifend metus ac tristique pharetra. Nunc urna lectus, egestas et purus eget, hendrerit varius mi. Mauris posuere arcu massa, in blandit enim ultrices nec. Cras eu eros justo. In tempor imperdiet lectus, ut sodales ante porta quis. Mauris euismod, dui ullamcorper facilisis dignissim, arcu diam consectetur elit, vitae convallis augue lorem sodales ante. Nullam in massa imperdiet, dapibus ex non, venenatis felis. Aliquam sit amet luctus nibh. Phasellus tincidunt porttitor elementum. Morbi enim magna, mollis quis velit in, eleifend aliquam libero. Donec eu ante urna. Maecenas viverra ipsum libero, sed placerat nulla porttitor in.</p>
-                            <p>Nullam volutpat, ante vel cursus varius, velit orci auctor nibh, sit amet viverra sapien nulla et turpis. Donec aliquam id eros a egestas. Nunc purus sapien, auctor eu pharetra dignissim, convallis id nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at libero varius, pellentesque erat at, luctus felis. Donec interdum, augue id malesuada faucibus, lectus sapien rhoncus eros, at lacinia dui ex id urna. Sed in blandit erat. Nullam vel congue leo. Proin maximus laoreet mi non placerat. Aliquam nisi lectus, consectetur sit amet massa pulvinar, suscipit porta orci. Morbi fringilla felis ut quam tristique, a viverra urna malesuada. Ut non odio pulvinar, dignissim eros eget, pharetra lorem. Suspendisse sit amet egestas mauris.</p>
-                        </div>
-                        <h1>REVIEW</h1>
-                        <div className="postText">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id massa vulputate posuere. Ut eget sagittis nunc. Quisque eleifend metus ac tristique pharetra. Nunc urna lectus, egestas et purus eget, hendrerit varius mi. Mauris posuere arcu massa, in blandit enim ultrices nec. Cras eu eros justo. In tempor imperdiet lectus, ut sodales ante porta quis. Mauris euismod, dui ullamcorper facilisis dignissim, arcu diam consectetur elit, vitae convallis augue lorem sodales ante. Nullam in massa imperdiet, dapibus ex non, venenatis felis. Aliquam sit amet luctus nibh. Phasellus tincidunt porttitor elementum. Morbi enim magna, mollis quis velit in, eleifend aliquam libero. Donec eu ante urna. Maecenas viverra ipsum libero, sed placerat nulla porttitor in.</p>
-                            <p>Nullam volutpat, ante vel cursus varius, velit orci auctor nibh, sit amet viverra sapien nulla et turpis. Donec aliquam id eros a egestas. Nunc purus sapien, auctor eu pharetra dignissim, convallis id nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at libero varius, pellentesque erat at, luctus felis. Donec interdum, augue id malesuada faucibus, lectus sapien rhoncus eros, at lacinia dui ex id urna. Sed in blandit erat. Nullam vel congue leo. Proin maximus laoreet mi non placerat. Aliquam nisi lectus, consectetur sit amet massa pulvinar, suscipit porta orci. Morbi fringilla felis ut quam tristique, a viverra urna malesuada. Ut non odio pulvinar, dignissim eros eget, pharetra lorem. Suspendisse sit amet egestas mauris.</p>
-                        </div>
+                        {this.renderPost()}
                     </Col>
                     <Col xs={12} sm={4}>
-                            <h1>SPECS</h1>
-        
-                        <div className="postTextSpec">
-                            <ul>
-                                <li>Manufacturer: Samsung Electronics LTD.</li>
-                                <li>Screen Size: 5.8inch Curved</li>
-                                <li>Processor: Exynos 88778</li>
-                                <li>Memory (Ram): 4GB</li>
-                            </ul>
-                        </div>
-                        
-                         <h1>SOURCES</h1>
-                        <div className="postTextSpec">
-                            <ul>
-                                <li>Manufacturer: Samsung Electronics LTD.</li>
-                                <li>Screen Size: 5.8inch Curved</li>
-                                <li>Processor: Exynos 88778</li>
-                                <li>Memory (Ram): 4GB</li>
-                            </ul>
-                        </div>
-                        
-                        
-                         
-                        <div className="cardAuthor card-3">
-                            
-                            <div className="newsIMG2">
-                                <img src="../profile2.jpg"/>
-                                <h3>A U T H O R</h3>
-                                <h4>Vivek Dhutia</h4>
-                                <div className="extra">Passionate about gadgets and all things tech</div>
-                            </div>
-                        </div>
+                        {this.renderSideBar()}
                     </Col>
                 </Row>
             </Grid>

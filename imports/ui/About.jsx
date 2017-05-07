@@ -69,7 +69,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
     
     return (
       <div className="containerPar">
-        <Parallax bgImage="../about.jpg" strength={400}>
+        <Parallax bgImage="../about2.jpg" strength={400}>
           <br/>
             <div className="parIn"></div>
           <h1>Our Story (About)</h1>
@@ -96,7 +96,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                             
                             <div className="newsIMG2">
                                 <img src="../profile2.jpg"/>
-                                <h3>A U T H O R</h3>
+                                
                                 <h4>Vivek Dhutia</h4>
                                 <div className="extra">Passionate about gadgets and all things tech</div>
                             </div>
@@ -107,19 +107,19 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                             
                             <div className="newsIMG2">
                                 <img src="../profiletony.jpg"/>
-                                <h3>A U T H O R</h3>
+                                
                                 <h4>Hariras Tongyai</h4>
-                                <div className="extra">Passionate about gadgets and all things tech</div>
+                                <div className="extra"></div>
                             </div>
                         </div>
                         
                         <div className="cardAuthor card-3">
                             
                             <div className="newsIMG2">
-                                <img src="../profiletony.jpg"/>
-                                <h3>A U T H O R</h3>
+                                <img src="../profilekemal.jpg"/>
+                                
                                 <h4>Kemal Kole</h4>
-                                <div className="extra">Passionate about gadgets and all things tech</div>
+                                <div className="extra"></div>
                             </div>
                         </div>
                         

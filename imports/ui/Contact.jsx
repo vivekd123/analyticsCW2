@@ -9,7 +9,7 @@ import Task from './Task.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 //import theme from './PurpleAppBar.scss';
-import { Button, Grid, Row, Col } from 'react-bootstrap';
+import { Button, Grid, Row, Col, FormGroup, FieldGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
 // App component - represents the whole app
 class Contact extends Component {
@@ -18,6 +18,7 @@ class Contact extends Component {
 
     this.state = {
       hideCompleted: false,
+      success: false,
 //        loading: true
     };
   }
@@ -31,13 +32,42 @@ class Contact extends Component {
     event.preventDefault();
 
     // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+     const name = ReactDOM.findDOMNode(this.refs.name).value.trim();
+      const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+      const subject = ReactDOM.findDOMNode(this.refs.subject).value.trim();
+      const message = ReactDOM.findDOMNode(this.refs.message).value.trim();
+      
+      if (name.length > 4){
+            if (message.length > 0){
+            var validator = require('validator');
+            var newVal = validator.isEmail(email); //=> true 
+                if (email.length > 0 && newVal){
+                        
+                           Meteor.call('sendMessage', name, email, subject, message);
+                         // Clear form
+                           ReactDOM.findDOMNode(this.refs.name).value = "";
+                           ReactDOM.findDOMNode(this.refs.email).value = "";
+                           ReactDOM.findDOMNode(this.refs.subject).value = "";
+                           ReactDOM.findDOMNode(this.refs.message).value = "";
+                           ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = "";
+                          this.setState({
+                              success: true,
+                          })
+                        alert("Thankyou for contacting us!");
+                }else{
+                         ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = "Please enter a valid email address";                    
+                }
+                
+            }else{
+                ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = "Please enter a message";
+            }
+        }else{
+            ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = 'Please enter your name';
+        }
 
-    Meteor.call('tasks.insert', text);
-
-    // Clear form
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
+    
   }
+    
 
   toggleHideCompleted() {
     this.setState({
@@ -45,23 +75,10 @@ class Contact extends Component {
     });
   }
 
-  renderTasks() {
-    let filteredTasks = this.props.tasks;
-    if (this.state.hideCompleted) {
-      filteredTasks = filteredTasks.filter(task => !task.checked);
-    }
-    return filteredTasks.map((task) => {
-      const currentUserId = this.props.currentUser && this.props.currentUser._id;
-      const showPrivateButton = task.owner === currentUserId;
-
-      return (
-        <Task
-          key={task._id}
-          task={task}
-          showPrivateButton={showPrivateButton}
-        />
-      );
-    });
+  submitForm(){
+     
+    const email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+    const phone = ReactDOM.findDOMNode(this.refs.phone).value.trim();
   }
 
   render() {
@@ -79,37 +96,88 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
             <Grid>
                 <Row className="show-grid postCont">
                     <Col xs={12} sm={8}>
-                       <h1>INITIAL IMPRESSIONS</h1>
+                       <h1>Email Form</h1>
                         <div className="postText">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id massa vulputate posuere. Ut eget sagittis nunc. Quisque eleifend metus ac tristique pharetra. Nunc urna lectus, egestas et purus eget, hendrerit varius mi. Mauris posuere arcu massa, in blandit enim ultrices nec. Cras eu eros justo. In tempor imperdiet lectus, ut sodales ante porta quis. Mauris euismod, dui ullamcorper facilisis dignissim, arcu diam consectetur elit, vitae convallis augue lorem sodales ante. Nullam in massa imperdiet, dapibus ex non, venenatis felis. Aliquam sit amet luctus nibh. Phasellus tincidunt porttitor elementum. Morbi enim magna, mollis quis velit in, eleifend aliquam libero. Donec eu ante urna. Maecenas viverra ipsum libero, sed placerat nulla porttitor in.</p>
+                             <form onSubmit={this.handleSubmit.bind(this)}>
+                                <FormGroup
+                                  controlId="formBasicText"
+                                >
+                                    <ControlLabel>Name*</ControlLabel>
+                                  <FormControl
+                                      ref="name"
+                                    type="text"
+                                    placeholder="James Smith"
+                                  />
+                                                              
+                                </FormGroup>
+                                 
+                                 <FormGroup
+                                  controlId="formBasicText2"
+                                >
+                                    <ControlLabel>Email*</ControlLabel>
+                                  <FormControl
+                                      ref="email"
+                                    type="email"
+                                    placeholder="name@email.com"
+                                  />
+                                                              
+                                </FormGroup>
+                                 
+                                  <FormGroup
+                                  controlId="formBasicText3"
+                                >
+                                    <ControlLabel>Subject</ControlLabel>
+                                  <FormControl
+                                      ref="subject"
+                                    type="text"
+                                    placeholder="Subject"
+                                  />
+                                                              
+                                </FormGroup>
+                                 
+                                  <FormGroup controlId="formControlsTextarea">
+                                  <ControlLabel>Message*</ControlLabel>
+                                  <FormControl ref="message" componentClass="textarea" placeholder="Message" />
+                                </FormGroup>
+                                 
+                                  <h4 style={{color:'#ff0000'}} ref="errorMes"></h4>
+                                 
+                                 <FormGroup>
+                                    <Button style={{backgroundColor:"#153e72",color:"#fff"}} type="submit">
+                                        Send
+                                    </Button>
+                                 </FormGroup>
+                                 
+                                 {this.state.success ? 
+                                     <FormGroup>
+                                  <FormControl.Static>
+                                    Message Successfully Sent
+                                  </FormControl.Static>
+                                </FormGroup>
+                                 : null }
+                                 
+                              </form>
                         </div>
-                        <h1>REVIEW</h1>
-                        <div className="postText">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id massa vulputate posuere. Ut eget sagittis nunc. Quisque eleifend metus ac tristique pharetra. Nunc urna lectus, egestas et purus eget, hendrerit varius mi. Mauris posuere arcu massa, in blandit enim ultrices nec. Cras eu eros justo. In tempor imperdiet lectus, ut sodales ante porta quis. Mauris euismod, dui ullamcorper facilisis dignissim, arcu diam consectetur elit, vitae convallis augue lorem sodales ante. Nullam in massa imperdiet, dapibus ex non, venenatis felis. Aliquam sit amet luctus nibh. Phasellus tincidunt porttitor elementum. Morbi enim magna, mollis quis velit in, eleifend aliquam libero. Donec eu ante urna. Maecenas viverra ipsum libero, sed placerat nulla porttitor in.</p>
-                            <p>Nullam volutpat, ante vel cursus varius, velit orci auctor nibh, sit amet viverra sapien nulla et turpis. Donec aliquam id eros a egestas. Nunc purus sapien, auctor eu pharetra dignissim, convallis id nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at libero varius, pellentesque erat at, luctus felis. Donec interdum, augue id malesuada faucibus, lectus sapien rhoncus eros, at lacinia dui ex id urna. Sed in blandit erat. Nullam vel congue leo. Proin maximus laoreet mi non placerat. Aliquam nisi lectus, consectetur sit amet massa pulvinar, suscipit porta orci. Morbi fringilla felis ut quam tristique, a viverra urna malesuada. Ut non odio pulvinar, dignissim eros eget, pharetra lorem. Suspendisse sit amet egestas mauris.</p>
-                        </div>
+                       
                     </Col>
                     <Col xs={12} sm={4}>
-                            <h1>THE TEAM</h1>
+                            <h1>Contact Details</h1>
         
                         <div className="postTextSpec">
                             <ul>
-                                <li>Manufacturer: Samsung Electronics LTD.</li>
-                                <li>Screen Size: 5.8inch Curved</li>
-                                <li>Processor: Exynos 88778</li>
-                                <li>Memory (Ram): 4GB</li>
+                                <li>Email: info@techiepulse.com</li>
                             </ul>
                         </div>
                         
-                         <h1>VENTURES</h1>
+                        <h1>Location</h1>
+        
                         <div className="postTextSpec">
                             <ul>
-                                <li>Manufacturer: Samsung Electronics LTD.</li>
-                                <li>Screen Size: 5.8inch Curved</li>
-                                <li>Processor: Exynos 88778</li>
-                                <li>Memory (Ram): 4GB</li>
+                                <li>London, UK</li>
                             </ul>
                         </div>
+                        
+                         
                     </Col>
                 </Row>
             </Grid>
