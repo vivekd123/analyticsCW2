@@ -31,7 +31,37 @@ if (Meteor.isServer) {
 
     
     Meteor.methods({
-    sendEmail: function (to, text) {
+    sendEmail: function (to) {
+        check([to], [String]);
+        
+        SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
+        
+        var emailData = {
+              name: "Vivek",
+              favoriteRestaurant: "Honker Burger",
+              bestFriend: "Skeeter Valentine",
+            };
+
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+            to: to,
+            from: 'Techie Pulse <noreply@techiepulse.com>',
+            subject: "Newsletter Sign Up",
+            html: SSR.render('htmlEmail', emailData),
+        });
+        
+        Email.send({
+            to: "vivek@dhutia.com",
+            from: to,
+            subject: "New Subscriber",
+            text: "New Subscriber: " + to,
+        });
+    },
+        
+            sendEmail2: function (to, text) {
         check([to, text], [String]);
         
         SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
@@ -47,11 +77,12 @@ if (Meteor.isServer) {
         this.unblock();
 
         Email.send({
-            to: "vivek.dhutia@my.westminster.ac.uk",
+            to: to,
             from: 'Techie Pulse <noreply@techiepulse.com>',
-            subject: "Techie Pulse Week-In Review",
+            subject: "Techie Pulse Newsletter Sign Up",
             html: SSR.render('htmlEmail', emailData),
         });
+                
     },
         
         sendMessage: function (name, email, subject, message) {        

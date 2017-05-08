@@ -56,7 +56,7 @@ class App2 extends Component{
             var newVal = validator.isEmail(email); //=> true 
                 if (newVal){
                         
-//                           Meteor.call('sendMessage', name, email, subject, message);
+                           Meteor.call('sendEmail', email);
                          // Clear form
                            ReactDOM.findDOMNode(this.refs.subBox).value = "Thankyou for subscribing :)";
                            ReactDOM.findDOMNode(this.refs.subButton).style.display = "none";
@@ -135,7 +135,7 @@ class App2 extends Component{
             {this.state.search ? 
                 <section className="navBar">
                     <ul>
-                        <li className={this.state.condition ? "navlist2" :"navList"}>
+                        <li style={{margin:5}} className={this.state.condition ? "navlist2" :"navList"}>
                             
                               <input className="searchBox" type="text" name="firstname" placeholder="Search" />
                             
