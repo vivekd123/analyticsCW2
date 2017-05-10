@@ -62,7 +62,8 @@ class App2 extends Component{
                            ReactDOM.findDOMNode(this.refs.subButton).style.display = "none";
                            ReactDOM.findDOMNode(this.refs.subButton2).style.visibility = "visible";
                            ReactDOM.findDOMNode(this.refs.errorMes).innerHTML = "";
-                    
+                            
+                            dataLayer.push({'event':'SignUp'})
                     
 //                          this.setState({
 //                              success: true,
@@ -108,22 +109,21 @@ class App2 extends Component{
     }
     
     return (
-    <div>
-            <section className="navBar">
+    <header>
+            <nav className="navBar">
             <ul>
-    <Link to="/"><li><h1>TECHIE PULSE</h1></li></Link>
-    <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.facebook.com/techiepulse/" target="_blank"><FaFB /></a></li>
-    <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://twitter.com/techie_pulse" target="_blank"><FaTW /></a></li>
-    <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.instagram.com/techiepulse/" target="_blank"><FaIN /></a></li>
-    <li className={this.state.condition ? "navlist2" :"navList"}><a onClick={this.toggleNewsletter.bind(this)}>Newsletter</a></li>
-    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/about" activeClassName="active">About</Link></li>
-    <li  className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/contact" activeClassName="active">Contact</Link></li>
-    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><IndexLink to="/" activeClassName="active">Trending</IndexLink></li>
-                <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><a onClick={this.toggleSearch.bind(this)}><FaBeer /></a></li>
-    <li className="mobileBar" style={{float:"right"}}><a onClick={this.burgerMen.bind(this)}><FaBar /></a></li>
-  </ul>
-                    
-   </section>
+                <Link to="/"><li><h1>TECHIE PULSE</h1></li></Link>
+                <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.facebook.com/techiepulse/" target="_blank"><FaFB /></a></li>
+                <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://twitter.com/techie_pulse" target="_blank"><FaTW /></a></li>
+                <li className={this.state.condition ? "navlist2" :"navList"}><a href="https://www.instagram.com/techiepulse/" target="_blank"><FaIN /></a></li>
+                <li className={this.state.condition ? "navlist2" :"navList"}><a onClick={this.toggleNewsletter.bind(this)}>Newsletter</a></li>
+                <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/about" activeClassName="active">About</Link></li>
+                <li  className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/contact" activeClassName="active">Contact</Link></li>
+                <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><IndexLink to="/" activeClassName="active">Trending</IndexLink></li>
+                            <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><a onClick={this.toggleSearch.bind(this)}><FaBeer /></a></li>
+                <li className="mobileBar" style={{float:"right"}}><a onClick={this.burgerMen.bind(this)}><FaBar /></a></li>
+            </ul>              
+   </nav>
             
             <section className="navBar2">
             <ul>
@@ -186,7 +186,7 @@ class App2 extends Component{
                     </Row>
                 </Grid>
             </footer>
-    </div>
+    </header>
       
     );
     }

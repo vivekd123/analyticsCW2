@@ -94,7 +94,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                             
                               <img src="bluetooth4.jpg"/>
                             <h4>What is Bluetooth 5?</h4>
-                            <h3>17th April 2017</h3>
+                            <h3>27th April 2017</h3>
                             <div className="extra">The latest and greatest in bluetooth technology</div>
                         </div>
                 </Link></div>
@@ -105,7 +105,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                         <div className="newsIMG">
                             <img src="gold.jpg"/>
                             <h4>Gold Plated iPhone 7</h4>
-                            <h3>16th April 2017</h3>
+                            <h3>26th April 2017</h3>
                             <div className="extra">A custom gold plated iPhone 7...</div>
                         </div>
                         </Link></div>
@@ -117,12 +117,12 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                 <Row className="show-grid">
                     <Col xs={12} sm={12}>
                         <div className="card card-3">
-                            <Link to="/posts/samsung" activeClassName="active">
+                            <Link to="/posts/light-phone" activeClassName="active">
                         <div className="newsIMG">
-                            <img src="1test.jpg"/>
-                            <h4>Samsung S7 Camera Test</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
+                            <img src="light.jpg"/>
+                            <h4>The Light Phone</h4>
+                            <h3>20th April 2017</h3>
+                            <div className="extra">Minimalist Mobile Phone</div>
                         </div>
                             </Link>
                         </div>
@@ -132,35 +132,17 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
             
              <Grid>
                 <Row className="show-grid">
-                    <Col xs={12} sm={4}>
-                        <div className="card card-3"><a href="#">
+                    <Col xs={12} sm={12}>
+                        <div className="card card-3">
+                            <Link to="/posts/oneplus-midnight-black" activeClassName="active">
                         <div className="newsIMG">
-                            <img src="bixby.jpg"/>
-                            <h4>Samsung Bixby First Look</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
+                            <img src="oneplus.jpg"/>
+                            <h4>One Plus 3T Midnight Black Limited Edition</h4>
+                            <h3>19th April 2017</h3>
+                            <div className="extra">The Flagship Killer</div>
                         </div>
-                </a></div>
-                    </Col>
-                    <Col xs={12} sm={4}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="mix.jpg"/>
-                            <h4>Xiaomi Mix: One of the best looking smartphones of 2017</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
+                            </Link>
                         </div>
-                </a></div>
-                    </Col>
-                    <Col xs={12} sm={4}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="note7.jpg"/>
-                            <h4>Can the Samsung S8 still catch fire as easily as the Note 7?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
-                        </div>
-                </a></div>
                     </Col>
                 </Row>
             </Grid>

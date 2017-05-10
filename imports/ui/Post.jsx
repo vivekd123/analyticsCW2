@@ -185,61 +185,13 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
             <Grid>
                 <Row className="show-grid">
                     <Col xs={12}><h1>RELATED ARTICLES</h1></Col>
-                    <Col xs={12} sm={4}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="../2card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
-                        </div>
-                </a></div>
-                    </Col>
-                    <Col xs={12} sm={4}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="../3card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
-                        </div>
-                </a></div>
-                    </Col>
-                     <Col xs={12} sm={4}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="../3card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
-                        </div>
-                </a></div>
-                    </Col>
+
                 </Row>
             </Grid>
         
              <Grid>
                 <Row className="show-grid">
-                    <Col xs={12} sm={6}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="../2card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
-                        </div>
-                </a></div>
-                    </Col>
-                    <Col xs={12} sm={6}>
-                        <div className="card card-3"><a href="#">
-                        <div className="newsIMG">
-                            <img src="../3card.jpg"/>
-                            <h4>Samsung S8 Fail?</h4>
-                            <h3>10th April 2017</h3>
-                            <div className="extra">Samsung launched the new...</div>
-                        </div>
-                </a></div>
-                    </Col>
+                    
                 </Row>
             </Grid>
             
