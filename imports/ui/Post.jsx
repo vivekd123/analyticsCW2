@@ -26,6 +26,7 @@ class Post extends Component {
       dataState: data,
       postTitle:"",
       postDate: "",
+      movies: [],
 //        loading: true
     };
   }
@@ -35,17 +36,30 @@ class Post extends Component {
 //        setTimeout(() => this.setState({ loading: false }), 1000);
 //    }    
   componentWillMount(){
-      let filteredData = this.state.dataState;
-      filteredData = filteredData.filter(post => post.slug == this.props.params.title);
-      this.setState({
-          dataState: filteredData
-      });
-      if (filteredData.length == 0){
-          console.log("notfound");
-          browserHistory.replace('/not-found');
-      }
-      
-      dataLayer.push({'vivek':this.props.params.title, 'event':'RunTask'})
+//      let filteredData = this.state.dataState;
+//      filteredData = filteredData.filter(post => post.slug == this.props.params.title);
+//      this.setState({
+//          dataState: filteredData
+//      });
+//      if (filteredData.length == 0){
+//          console.log("notfound");
+//          browserHistory.replace('/not-found');
+//      }
+//      
+//      dataLayer.push({'vivek':this.props.params.title, 'event':'RunTask'})
+
+      var urlNew = "http://api1.techiepulse.com/wp-json/wp/v2/posts?slug=" + this.props.params.title + "&_embed"
+      let dataURL = urlNew;
+//        let dataURL = "http://business.thaiembassyuk.org.uk/wp-json/wp/v2/posts?per_page=10";
+        fetch(dataURL)
+          .then(res => res.json())
+          .then(res => {
+            this.setState({
+              movies: res
+            }, function(){
+//                Meteor.call('saveButtons', this.state.movies);
+            })
+          })
   }
     
 
@@ -159,47 +173,67 @@ class Post extends Component {
     }
 
   render() {
-const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
-    
+       var moment = require('moment');
+      var authorArray = []
+      var sidebarArray = []
+      let movies = this.state.movies.map((movie, index) => {
+          var date = moment(movie.date).format('LL')
+          var date2 = moment(movie.date).fromNow();
+          if(movie.acf != false){
+              sidebarArray.push(<div key={movie.id}>
+                    <h1>{movie.acf.sidebar_title}</h1>
+                    <div className="postTextSpec">{renderHTML(movie.acf.sidebar_text)}</div>
+                    </div>)
+          }
+          if(movie._embedded['author'][0].slug == "vivek"){
+              authorArray.push(
+            <div key={movie.id} className="cardAuthor card-3">
+                            <div className="newsIMG2">
+                                <img src="../profileViv.jpg"/>
+                                <h3>A U T H O R</h3>
+                                <h4>Vivek Dhutia</h4>
+                                <div className="extra">Passionate about gadgets and all things tech</div>
+                            </div>
+                        </div>)
+      }else{
+          authorArray.push(
+        <div key={movie.id} className="cardAuthor card-3">
+                <div className="newsIMG2">
+                    <img src="../profiletony.jpg"/>
+                    <h3>A U T H O R</h3>
+                    <h4>Hariras Tongyai</h4>
+                    <div className="extra">Passionate about gadgets and all things tech</div>
+                </div>
+            </div>)
+      }
+      return <div key={index}>
+          <Parallax bgImage={movie._embedded['wp:featuredmedia'][0].source_url} strength={300} bgwidth={'100%'}>
+          <br/>
+            <div className="parIn"></div>
+              <h1 style={{display:"inline-block"}} key={movie.title.rendered} dangerouslySetInnerHTML={ {__html: movie.title.rendered}}/><h4 className="postDate" style={{display:"inline-block"}} dangerouslySetInnerHTML={ {__html: date2}}></h4>
+           
+          </Parallax>
+          <Grid>
+                <Row className="show-grid postCont">
+                    <Col xs={12} sm={8}>
+                        
+                        
+                        <div className="postText" dangerouslySetInnerHTML={ {__html: movie.content.rendered} } />
+                        
+                    </Col>
+                    <Col xs={12} sm={4}>
+                        {sidebarArray}
+                        {authorArray}
+                    </Col>
+                </Row>
+         </Grid>
+      </div>
+    });
+
     return (
 
       <div className="containerPar">
-        <Parallax bgImage={this.renderImage()} strength={200}>
-          <br/>
-            <div className="parIn"></div>
-          {this.renderTitle()}
-           
-        </Parallax>
-            
-            <Grid>
-                <Row className="show-grid postCont">
-                    <Col xs={12} sm={8}>
-                        {this.renderPost()}
-                    </Col>
-                    <Col xs={12} sm={4}>
-                        {this.renderSideBar()}
-                    </Col>
-                </Row>
-            </Grid>
-            
-            <Grid>
-                <Row className="show-grid">
-                    <Col xs={12}><h1>RELATED ARTICLES</h1></Col>
-
-                </Row>
-            </Grid>
-        
-             <Grid>
-                <Row className="show-grid">
-                    
-                </Row>
-            </Grid>
-            
-            
-            
-            <div>
-                
-            </div>
+        {movies}
       </div>
     );
   }

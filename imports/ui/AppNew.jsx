@@ -20,6 +20,7 @@ class AppNew extends Component {
 
     this.state = {
       hideCompleted: false,
+      movies: [],
 //        loading: true
     };
   }
@@ -28,7 +29,19 @@ class AppNew extends Component {
 //        console.log("Mounted");
 //        setTimeout(() => this.setState({ loading: false }), 1000);
 //    }   
-    
+        componentWillMount(){
+        let dataURL = "http://api1.techiepulse.com/wp-json/wp/v2/posts?_embed";
+//        let dataURL = "http://business.thaiembassyuk.org.uk/wp-json/wp/v2/posts?per_page=10";
+        fetch(dataURL)
+          .then(res => res.json())
+          .then(res => {
+            this.setState({
+              movies: res
+            }, function(){
+//                Meteor.call('saveButtons', this.state.movies);
+            })
+          })
+    }   
     
     
   handleSubmit(event) {
@@ -69,7 +82,31 @@ class AppNew extends Component {
   }
 
   render() {
-const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
+      var moment = require('moment');
+      var now = moment();
+      let movies = this.state.movies.map((movie, index) => {
+      if(now.diff(movie.date, 'days') > 7){
+          var date = moment(movie.date).format('LL')
+      }else{
+          var date = moment(movie.date).fromNow();
+      }  
+      var postLink = "/posts/" + movie.slug
+      return <div key={index}>
+          
+            <Col xs={12} sm={6}>
+                  <div className="card card-3">
+                      <Link to={postLink} activeClassName="active">
+                            <div className="newsIMG">
+                                <img src={movie._embedded['wp:featuredmedia'][0].source_url}/>
+                                <h4>{movie.title.rendered}</h4>
+                                <h3>{date}</h3>
+                                <div className="extra" dangerouslySetInnerHTML={ {__html: movie.excerpt.rendered} } />
+                            </div>
+                      </Link>
+                   </div>
+          </Col>
+      </div>
+    });
 
     return (
       <div className="containerPar">
@@ -80,74 +117,13 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
            
         </Parallax>
             
+           
+            
             <Grid>
-                <Row className="show-grid">
-                    <Col xs={12} sm={6}>
-                        <ReactCSSTransitionGroup
-                              transitionName="example"
-                              transitionAppear={true}
-                              transitionAppearTimeout={500}
-                              transitionEnter={false}
-                              transitionLeave={false}>
-                                 <div className="card card-3"><Link to="/posts/what-is-bluetooth-5" activeClassName="active">
-                        <div className="newsIMG">
-                            
-                              <img src="bluetooth4.jpg"/>
-                            <h4>What is Bluetooth 5?</h4>
-                            <h3>27th April 2017</h3>
-                            <div className="extra">The latest and greatest in bluetooth technology</div>
-                        </div>
-                </Link></div>
-                            </ReactCSSTransitionGroup>
-                    </Col>
-                    <Col xs={12} sm={6}>
-                        <div className="card card-3"><Link to="/posts/gold-iphone" activeClassName="active">
-                        <div className="newsIMG">
-                            <img src="gold.jpg"/>
-                            <h4>Gold Plated iPhone 7</h4>
-                            <h3>26th April 2017</h3>
-                            <div className="extra">A custom gold plated iPhone 7...</div>
-                        </div>
-                        </Link></div>
-                    </Col>
-                </Row>
+            <Row className="show-grid">
+                   {movies}
+              </Row>
             </Grid>
-            
-          <Grid>
-                <Row className="show-grid">
-                    <Col xs={12} sm={12}>
-                        <div className="card card-3">
-                            <Link to="/posts/light-phone" activeClassName="active">
-                        <div className="newsIMG">
-                            <img src="light.jpg"/>
-                            <h4>The Light Phone</h4>
-                            <h3>20th April 2017</h3>
-                            <div className="extra">Minimalist Mobile Phone</div>
-                        </div>
-                            </Link>
-                        </div>
-                    </Col>
-                </Row>
-            </Grid>
-            
-             <Grid>
-                <Row className="show-grid">
-                    <Col xs={12} sm={12}>
-                        <div className="card card-3">
-                            <Link to="/posts/oneplus-midnight-black" activeClassName="active">
-                        <div className="newsIMG">
-                            <img src="oneplus.jpg"/>
-                            <h4>One Plus 3T Midnight Black Limited Edition</h4>
-                            <h3>19th April 2017</h3>
-                            <div className="extra">The Flagship Killer</div>
-                        </div>
-                            </Link>
-                        </div>
-                    </Col>
-                </Row>
-            </Grid>
-            
-            
             
             <div>
                 

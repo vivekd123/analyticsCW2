@@ -127,8 +127,11 @@ class App2 extends Component{
             
             <section className="navBar2">
             <ul>
+        <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Cameras</Link></li> 
+    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Vintage Tech</Link></li> 
     <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/gadgets" activeClassName="active">Gadgets</Link></li>
-    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Mobile Tech</Link></li>  
+    <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Mobile Tech</Link></li> 
+        <li className={this.state.condition ? "navlist2" :"navList"} style={{float:"right"}}><Link to="/mobile" activeClassName="active">Essentials</Link></li> 
   </ul>
                     
    </section>

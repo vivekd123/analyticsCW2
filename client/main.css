@@ -274,6 +274,19 @@ input[type=checkbox]{
     color: #fff;
 /*    margin-left: 50px;*/
     padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.postDate{
+    background-color: #d8d8d8;
+    opacity: 0.8;
+    color: #000;
+/*    margin-left: 50px;*/
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     
@@ -285,6 +298,7 @@ input[type=checkbox]{
 }
 
 .postCont p{
+    margin-top: 20px;
     color: #000;
     font-size: 19px;
 /*
@@ -304,6 +318,14 @@ input[type=checkbox]{
     padding-bottom: 8px;
 }
 
+.postTextSpec p{
+    padding: 15px;
+/*    padding-left: 0px;*/
+    padding-top: 0px;
+    padding-bottom: 8px;
+    font-size: 15px;
+}
+
 .postTextSpec ul li{
     font-size: 15px;
 }
@@ -314,7 +336,7 @@ input[type=checkbox]{
 }
 
 .parIn{
-    height: 15vh;
+    height: 35vh;
 }
 
 .loadingTitle{

@@ -95,7 +95,7 @@ const dummyText = 'Lorem Ipsum is simply dummy text of the printing and typesett
                         <div className="cardAuthor card-3">
                             
                             <div className="newsIMG2">
-                                <img src="../profile2.jpg"/>
+                                <img src="../profileViv.jpg"/>
                                 
                                 <h4>Vivek Dhutia</h4>
                                 <div className="extra">Passionate about gadgets and all things tech</div>
